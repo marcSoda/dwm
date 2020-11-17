@@ -1,5 +1,7 @@
+.gitignore
 config.h
 drw.o
 dwm
 dwm.o
 util.o
+dwm-fullgaps-6.2.diff
