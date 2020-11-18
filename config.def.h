@@ -61,6 +61,14 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *firefox_cmd[]  = { "firefox", NULL };
 static const char *ncspot_cmd[]  = { "alacritty", "--title", "ncspot", "--command", "ncspot", NULL };
+static const char *media_play_pause_cmd[] = { "playerctl", "play-pause", NULL };
+static const char *media_next_cmd[] = { "playerctl", "next", NULL };
+static const char *media_previous_cmd[] = { "playerctl", "previous", NULL };
+static const char *volume_up_cmd[] = { "pactl", "--", "set-sink-volume", "0", "+10%", NULL };
+static const char *volume_down_cmd[] = { "pactl", "--", "set-sink-volume", "0", "-10%", NULL };
+static const char *volume_mute_cmd[] = { "pactl", "--", "set-sink-volume", "0", "0%", NULL };
+static const char *brightness_up_cmd[] = { "brightnessctl", "--save", "s", "10%+", NULL };
+static const char *brightness_down_cmd[] = { "brightnessctl", "--save", "s", "10%-", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -68,6 +76,14 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = firefox_cmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = ncspot_cmd } },
+	{ MODKEY,                       XK_F1,     spawn,          {.v = volume_mute_cmd } },
+	{ MODKEY,                       XK_F2,     spawn,          {.v = volume_down_cmd } },
+	{ MODKEY,                       XK_F3,     spawn,          {.v = volume_up_cmd } },
+	{ MODKEY,                       XK_F4,     spawn,          {.v = media_previous_cmd } },
+	{ MODKEY,                       XK_F5,     spawn,          {.v = media_play_pause_cmd } },
+	{ MODKEY,                       XK_F6,     spawn,          {.v = media_next_cmd } },
+	{ MODKEY,                       XK_Up,     spawn,          {.v = brightness_up_cmd } },
+	{ MODKEY,                       XK_Down,   spawn,          {.v = brightness_down_cmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
