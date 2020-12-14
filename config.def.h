@@ -1,5 +1,3 @@
-/* See LICENSE file for copyright and license details. */
-
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
@@ -61,15 +59,16 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *firefox_cmd[]  = { "firefox", NULL };
 static const char *dmenufm_cmd[] = { "dmenufm", NULL };
+static const char *screenshot_cmd[] = { "scrot", "-d3", "/home/marc/screenshots/%Y-%m-%d-%s_$wx$h.jpg", NULL };
 static const char *ncspot_cmd[]  = { "alacritty", "--title", "ncspot", "--command", "ncspot", NULL };
 static const char *media_play_pause_cmd[] = { "playerctl", "play-pause", NULL };
 static const char *media_next_cmd[] = { "playerctl", "next", NULL };
 static const char *media_previous_cmd[] = { "playerctl", "previous", NULL };
-static const char *volume_up_cmd[] = { "pactl", "--", "set-sink-volume", "0", "+5%", NULL };
-static const char *volume_down_cmd[] = { "pactl", "--", "set-sink-volume", "0", "-5%", NULL };
-static const char *volume_mute_cmd[] = { "pactl", "--", "set-sink-volume", "0", "0%", NULL };
-static const char *brightness_up_cmd[] = { "brightnessctl", "--save", "s", "5%+", NULL };
-static const char *brightness_down_cmd[] = { "brightnessctl", "--save", "s", "5%-", NULL };
+static const char *volume_up_cmd[] = { "amixer", "set", "'Master'", "5%+", NULL };
+static const char *volume_down_cmd[] = { "amixer", "set", "'Master'", "5%-", NULL };
+static const char *volume_mute_cmd[] = { "pactl", "--", "set-sink-mute", "0", "toggle", NULL };
+static const char *brightness_up_cmd[] = { "brightnessctl", "--save", "s", "1%+", NULL };
+static const char *brightness_down_cmd[] = { "brightnessctl", "--save", "s", "1%-", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -78,6 +77,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = firefox_cmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = ncspot_cmd } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = dmenufm_cmd } },
+	{ MODKEY,                       XK_F11,    spawn,          {.v = screenshot_cmd } },
 	{ MODKEY,                       XK_F1,     spawn,          {.v = volume_mute_cmd } },
 	{ MODKEY,                       XK_F2,     spawn,          {.v = volume_down_cmd } },
 	{ MODKEY,                       XK_F3,     spawn,          {.v = volume_up_cmd } },
