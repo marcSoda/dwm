@@ -34,9 +34,11 @@ case $1 in
 	send_notification
 	;;
     mute)
-    	# Toggle mute
+# Toggle mute
 	amixer -D pulse set Master 1+ toggle > /dev/null
-	#instead of send_notification, force the volume to read 0 when muted because the volume from get_volume() is not technically 0
-	dunstify -i	/home/marc/suckless/dwm/addons/dunst_scripts/volume.png -r 1701	" 0%"
-	;;
+	if is_mute ; then
+	    dunstify -i /home/marc/suckless/dwm/addons/dunst_scripts/volume.png -r 1701 -u normal "Mute"
+	else
+	    send_notification
+	fi
 esac
