@@ -64,9 +64,9 @@ static const char *ncspot_cmd[]  = { "alacritty", "--title", "ncspot", "--comman
 static const char *media_play_pause_cmd[] = { "playerctl", "play-pause", NULL };
 static const char *media_next_cmd[] = { "playerctl", "next", NULL };
 static const char *media_previous_cmd[] = { "playerctl", "previous", NULL };
-static const char *volume_up_cmd[] = { "amixer", "set", "'Master'", "5%+", NULL };
-static const char *volume_down_cmd[] = { "amixer", "set", "'Master'", "5%-", NULL };
-static const char *volume_mute_cmd[] = { "pactl", "--", "set-sink-mute", "0", "toggle", NULL };
+static const char *volume_up_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/volume.sh", "up", NULL };
+static const char *volume_down_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/volume.sh", "down", NULL };
+static const char *volume_mute_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/volume.sh", "mute", NULL };
 static const char *brightness_up_cmd[] = { "brightnessctl", "--save", "s", "1%+", NULL };
 static const char *brightness_down_cmd[] = { "brightnessctl", "--save", "s", "1%-", NULL };
 
