@@ -67,8 +67,8 @@ static const char *media_previous_cmd[] = { "playerctl", "previous", NULL };
 static const char *volume_up_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/volume.sh", "up", NULL };
 static const char *volume_down_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/volume.sh", "down", NULL };
 static const char *volume_mute_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/volume.sh", "mute", NULL };
-static const char *brightness_up_cmd[] = { "brightnessctl", "--save", "s", "1%+", NULL };
-static const char *brightness_down_cmd[] = { "brightnessctl", "--save", "s", "1%-", NULL };
+static const char *brightness_up_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/brightness.sh", "up", NULL };
+static const char *brightness_down_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/brightness.sh", "down", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
