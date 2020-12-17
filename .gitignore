@@ -1,2 +1,6 @@
-.gitignore
 config.h
+drw.o
+dwm
+dwm.1
+dwm.o
+util.o
