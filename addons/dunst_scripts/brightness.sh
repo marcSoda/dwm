@@ -10,7 +10,7 @@ function get_brightness {
 
 function send_notification {
     brightness=`get_brightness`
-    dunstify -i	/home/marc/suckless/dwm/addons/dunst_scripts/brightness.png -r 1701	" $brightness%"
+    dunstify -i	/home/marc/environment/dwm/addons/dunst_scripts/brightness.png -r 1701	" $brightness%"
 }
 
 case $1 in

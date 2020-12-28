@@ -28,5 +28,4 @@ do
 
     xsetroot -name " | $dispstr"
     sleep 1
-
 done

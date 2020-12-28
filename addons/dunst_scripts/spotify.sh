@@ -3,7 +3,7 @@ function send_notification {
     artist=`playerctl metadata artist`
     song=`playerctl metadata title`
     album=`playerctl metadata album`
-    dunstify -r 1702 "$artist" "$song\n$album"
+    dunstify -r 1701 "$artist" "$song\n$album"
 }
 
 case $1 in

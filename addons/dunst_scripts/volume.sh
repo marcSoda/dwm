@@ -17,7 +17,7 @@ function is_mute {
 
 function send_notification {
     volume=`get_volume`
-    dunstify -i	/home/marc/suckless/dwm/addons/dunst_scripts/volume.png -r 1701	" $volume%"
+    dunstify -i	/home/marc/environment/dwm/addons/dunst_scripts/volume.png -r 1701	" $volume%"
 }
 
 case $1 in
@@ -25,19 +25,30 @@ case $1 in
 	# Set the volume on (if it was muted)
 	amixer -D pulse set Master on > /dev/null
 	# Up the volume (+ 5%)
-	amixer -D pulse sset Master 5%+ > /dev/null
+	if [ `get_volume` -lt  150 ] ; then
+	    for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
+	    do
+	    pactl set-sink-volume $SINK +5%
+	    done
+	fi
+
+
+
 	send_notification
 	;;
     down)
 	amixer -D pulse set Master on > /dev/null
-	amixer -D pulse sset Master 5%- > /dev/null
+	for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
+	do
+	pactl set-sink-volume $SINK -5%
+	done
 	send_notification
 	;;
     mute)
 # Toggle mute
 	amixer -D pulse set Master 1+ toggle > /dev/null
 	if is_mute ; then
-	    dunstify -i /home/marc/suckless/dwm/addons/dunst_scripts/volume.png -r 1701 -u normal "Mute"
+	    dunstify -i /home/marc/environment/dwm/addons/dunst_scripts/volume.png -r 1701 -u normal "Mute"
 	else
 	    send_notification
 	fi
