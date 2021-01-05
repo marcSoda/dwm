@@ -26,14 +26,15 @@ case $1 in
 	amixer -D pulse set Master on > /dev/null
 	# Up the volume (+ 5%)
 	if [ `get_volume` -lt  150 ] ; then
-	    for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
+	    # for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
+	    for SINK in `pacmd list-sinks | grep "name: " | cut -d '<' -f 2 | cut -d '>' -f 1`
 	    do
-	    pactl set-sink-volume $SINK +5%
+		# printf "%s\n" $SINK
+		if [ $SINK == `pacmd stat | grep 'Default sink name: ' | cut -d ' ' -f 4` ] ; then
+		    pactl set-sink-volume $SINK +5%
+		fi
 	    done
 	fi
-
-
-
 	send_notification
 	;;
     down)

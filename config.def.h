@@ -1,5 +1,5 @@
 /* appearance */
-static const unsigned int borderpx  = 4;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -9,8 +9,10 @@ static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
+/* static const char col_gray4[]       = "#eeeeee"; */
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#0DAAE7";
+/* static const char col_cyan[]        = "#0DAAE7"; */
+static const char col_cyan[]        = "#0087D7";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -28,6 +30,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Firefox",  NULL,       NULL,       0,            0,           -1 },
 	{ NULL,       NULL,       "ncspot",   1 << 8,       0,           -1 },
+	{ "vlc",      NULL,       NULL,       1 << 7,       0,           -1 },
 };
 
 /* layout(s) */
@@ -59,16 +62,16 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *firefox_cmd[]  = { "firefox", NULL };
 static const char *dmenufm_cmd[] = { "dmenufm", NULL };
-static const char *screenshot_cmd[] = { "scrot", "-d3", "/home/marc/screenshots/%Y-%m-%d-%s_$wx$h.jpg", NULL };
+static const char *screenshot_cmd[] = { "scrot", "/home/marc/screenshots/screenshot.jpg", NULL };
 static const char *ncspot_cmd[]  = { "alacritty", "--title", "ncspot", "--command", "ncspot", NULL };
-static const char *media_play_pause_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/spotify.sh", "play-pause", NULL };
-static const char *media_next_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/spotify.sh", "next", NULL };
-static const char *media_previous_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/spotify.sh", "previous", NULL };
-static const char *volume_up_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/volume.sh", "up", NULL };
-static const char *volume_down_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/volume.sh", "down", NULL };
-static const char *volume_mute_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/volume.sh", "mute", NULL };
-static const char *brightness_up_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/brightness.sh", "up", NULL };
-static const char *brightness_down_cmd[] = { "/home/marc/suckless/dwm/addons/dunst_scripts/brightness.sh", "down", NULL };
+static const char *media_play_pause_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/spotify.sh", "play-pause", NULL };
+static const char *media_next_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/spotify.sh", "next", NULL };
+static const char *media_previous_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/spotify.sh", "previous", NULL };
+static const char *volume_up_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/volume.sh", "up", NULL };
+static const char *volume_down_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/volume.sh", "down", NULL };
+static const char *volume_mute_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/volume.sh", "mute", NULL };
+static const char *brightness_up_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/brightness.sh", "up", NULL };
+static const char *brightness_down_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/brightness.sh", "down", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
