@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# A modular status bar for dwm
-# Joe Standring <git@joestandring.com>
-# GNU GPLv3
-
 # Dependencies: xorg-xsetroot
 
 # Store the directory the script is running from
