@@ -27,10 +27,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Firefox",  NULL,       NULL,       0,            0,           -1 },
-	{ NULL,       NULL,       "ncspot",   1 << 8,       0,           -1 },
-	{ "vlc",      NULL,       NULL,       1 << 7,       0,           -1 },
+	/* class      instance    title       tags mask     isfloating   isfakefullscreen monitor */
+	{ "Gimp",     NULL,       NULL,       0,            1,                          -1 },
+	{ "Brave",    NULL,       NULL,       0,            0,                          -1 },
+	{ NULL,       NULL,       "ncspot",   1 << 8,       0,                          -1 },
 };
 
 /* layout(s) */
@@ -60,19 +60,18 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-/* static const char *firefox_cmd[]  = { "firefox", NULL }; */
-static const char *browser_cmd[]  = { "firefox", NULL };
+static const char *browser_cmd[]  = { "brave", "--start-fullscreen", NULL };
 static const char *dmenufm_cmd[] = { "dmenufm", NULL };
-static const char *screenshot_cmd[] = { "scrot", "/home/marc/screenshots/screenshot.jpg", NULL };
+static const char *screenshot_cmd[] = { "scrot", "/home/marc/working/screenshots/screenshot.jpg", NULL };
 static const char *ncspot_cmd[]  = { "alacritty", "--title", "ncspot", "--command", "ncspot", NULL };
-static const char *media_play_pause_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/spotify.sh", "play-pause", NULL };
-static const char *media_next_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/spotify.sh", "next", NULL };
-static const char *media_previous_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/spotify.sh", "previous", NULL };
-static const char *volume_up_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/volume.sh", "up", NULL };
-static const char *volume_down_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/volume.sh", "down", NULL };
-static const char *volume_mute_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/volume.sh", "mute", NULL };
-static const char *brightness_up_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/brightness.sh", "up", NULL };
-static const char *brightness_down_cmd[] = { "/home/marc/environment/dwm/addons/dunst_scripts/brightness.sh", "down", NULL };
+static const char *media_play_pause_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/spotify.sh", "play-pause", NULL };
+static const char *media_next_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/spotify.sh", "next", NULL };
+static const char *media_previous_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/spotify.sh", "previous", NULL };
+static const char *volume_up_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/volume.sh", "up", NULL };
+static const char *volume_down_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/volume.sh", "down", NULL };
+static const char *volume_mute_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/volume.sh", "mute", NULL };
+static const char *brightness_up_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/brightness.sh", "up", NULL };
+static const char *brightness_down_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/brightness.sh", "down", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
