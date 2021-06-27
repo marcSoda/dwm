@@ -1,0 +1,23 @@
+#THIS IS A CUSTOM DIFF THAT CHANGES FOCUSMON SO IT MOVES TO A SPECIFIC MONITOR INSTEAD OF TOGGLING THE MONITORS
+diff --git a/dwm.c b/dwm.c
+index 0b13bcf..1f9ec94 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -824,14 +824,12 @@ focusin(XEvent *e)
+ 		setfocus(selmon->sel);
+ }
+
+-void
++static void
+ focusmon(const Arg *arg)
+ {
+ 	Monitor *m;
+-
+-	if (!mons->next)
+-		return;
+-	if ((m = dirtomon(arg->i)) == selmon)
++	for (m = mons; m && m->num != arg->i; m = m->next);
++	if (m == selmon)
+ 		return;
+ 	unfocus(selmon->sel, 0);
+ 	selmon = m;

@@ -824,14 +824,12 @@ focusin(XEvent *e)
 		setfocus(selmon->sel);
 }
 
-void
+static void
 focusmon(const Arg *arg)
 {
 	Monitor *m;
-
-	if (!mons->next)
-		return;
-	if ((m = dirtomon(arg->i)) == selmon)
+	for (m = mons; m && m->num != arg->i; m = m->next);
+	if (m == selmon)
 		return;
 	unfocus(selmon->sel, 0);
 	selmon = m;
