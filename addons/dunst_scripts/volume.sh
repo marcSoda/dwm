@@ -17,7 +17,7 @@ function is_mute {
 
 function send_notification {
     volume=`get_volume`
-    dunstify -i	/home/marc/environment/dwm/addons/dunst_scripts/volume.png -r 1701	" $volume%"
+    dunstify -i	/home/marc/working/environment/dwm/addons/dunst_scripts/volume.png -r 1701	" $volume%"
 }
 
 case $1 in
@@ -49,7 +49,7 @@ case $1 in
 # Toggle mute
 	amixer -D pulse set Master 1+ toggle > /dev/null
 	if is_mute ; then
-	    dunstify -i /home/marc/environment/dwm/addons/dunst_scripts/volume.png -r 1701 -u normal "Mute"
+	    dunstify -i /home/marc/working/environment/dwm/addons/dunst_scripts/volume.png -r 1701 -u normal "Mute"
 	else
 	    send_notification
 	fi

@@ -1,25 +1,28 @@
 #!/bin/bash
 
-# You can call this script like this:
-# $./brightness.sh up
-# $./brightness.sh down
-
-function get_brightness {
-    brightnessctl | grep % | cut -d '(' -f 2 | cut -d '%' -f 1
-}
+#call with brightness.sh <device> <up/down>
 
 function send_notification {
-    brightness=`get_brightness`
-    dunstify -i	/home/marc/environment/dwm/addons/dunst_scripts/brightness.png -r 1701	" $brightness%"
+    new_brightness=$( echo "($new_brightness * 100) / 1" | bc -l | cut -d. -f1)
+    dunstify -i	/home/marc/working/environment/dwm/addons/dunst_scripts/brightness.png -r 1701	" $new_brightness%"
 }
 
-case $1 in
-    up)
-	brightnessctl --save s 1%+
-	send_notification
-	;;
-    down)
-	brightnessctl --save s 1%-
-	send_notification
-	;;
-esac
+inc=.05
+brightness=$(xrandr --verbose | grep -w -A 5 $1 | grep Brightness | awk '{print $2}')
+if [ $2 = "up" ]; then
+    if (( $(echo "$brightness >= 1.0" | bc -l) )); then
+        new_brightness=1
+        send_notification
+        exit 0
+    fi
+    new_brightness=$(echo $brightness + $inc | bc )
+elif [ $2 = "down" ]; then
+    if (( $(echo "$brightness <= 0.0" | bc -l) )); then
+        new_brightness=0
+        send_notification
+        exit 0
+    fi
+    new_brightness=$(echo $brightness - $inc | bc )
+fi
+xrandr --output $1 --brightness $new_brightness
+send_notification
