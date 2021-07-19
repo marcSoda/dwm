@@ -1,2 +1,0 @@
-This folder contians scripts that work directly with the dunst program which is installed in ~/dunst with a config in ~/.config/dunst/dunstrc.
-At the time of creating this readme, the scripts add a popup on the screen when the volume or brightness hotkeys are pressed. The scripts are accessed in config.def.h (dwm config)
