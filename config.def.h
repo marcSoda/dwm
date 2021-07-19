@@ -2,7 +2,6 @@
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const unsigned int gappx     = 10;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -69,10 +68,10 @@ static const char *media_previous_cmd[] = { "/home/marc/working/environment/dwm/
 static const char *volume_up_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/volume.sh", "up", NULL };
 static const char *volume_down_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/volume.sh", "down", NULL };
 static const char *volume_mute_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/volume.sh", "mute", NULL };
-static const char *brightness_laptop_up_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/brightness.sh", "eDP-1", "up", NULL };
-static const char *brightness_laptop_down_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/brightness.sh", "eDP-1", "down", NULL };
-static const char *brightness_external_up_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/brightness.sh", "DP-1", "up", NULL };
-static const char *brightness_external_down_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/brightness.sh", "DP-1", "down", NULL };
+static const char *brightness_laptop_up_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/brightness.sh", "eDP1", "up", NULL };
+static const char *brightness_laptop_down_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/brightness.sh", "eDP1", "down", NULL };
+static const char *brightness_external_up_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/brightness.sh", "DP1", "up", NULL };
+static const char *brightness_external_down_cmd[] = { "/home/marc/working/environment/dwm/addons/dunst_scripts/brightness.sh", "DP1", "down", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -114,9 +113,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_k,      focusmon,       {.i = 0 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
